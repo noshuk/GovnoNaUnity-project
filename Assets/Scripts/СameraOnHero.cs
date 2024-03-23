@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public Transform playerTransform;
     public Vector3 offset;
+    public float camPositionSpeed = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = playerTransform.position + offset;
+        Vector3 newCamPosition = new Vector3(offset.x, playerTransform.position.y + offset.y, playerTransform.position.z + offset.z);
+        transform.position = Vector3.Lerp(transform.position, newCamPosition, camPositionSpeed * Time.deltaTime);
     }
 }
