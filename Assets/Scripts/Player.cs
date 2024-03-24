@@ -13,12 +13,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Vector3 moveInput = new Vector3(0, 0, Input.GetAxis("Vertical"));
+        Vector3 moveInput = new Vector3(0, 0, Input.GetAxis("Horizontal"));
 
-        Quaternion rotation = Quaternion.LookRotation(moveInput);
-        rotation.x = 0;
-        rotation.y = 0;
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0);
-        rb.velocity = moveInput * speed;
+        //Quaternion rotation = Quaternion.LookRotation(moveInput);
+        //rotation.x = 0;
+        //rotation.y = 0;
+        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0);
+        rb.velocity = -moveInput * speed;
     }
+
+   
 }
